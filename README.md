@@ -1,7 +1,7 @@
 # StudyZone
 Study planner för elever på KTH. 
 
-Sen måste man installera dotenv med det här commandatot:
+Sen måste man installera dotenv med det här kommandot:
 
 npm install dotenv
 npm i @kth/canvas-api
