@@ -6,7 +6,4 @@ Sen måste man installera dotenv med det här commandatot:
 npm install dotenv
 npm i @kth/canvas-api
 
-För att runna måste du skapa en .env fil med dessa attribut:
-
-CANVAS_API_URL=...
-CANVAS_API_TOKEN=...
+Gå till .env filen och skriv in din Canvas API token som du hittar här: https://canvas.kth.se/profile/settings
