@@ -3,7 +3,7 @@ import { CanvasApi } from "@kth/canvas-api";
 
 const canvas = new CanvasApi(
   "https://canvas.kth.se/api/v1",
-  "8779~r6MZwBxGnFc7DGnzYu3YuL7V4VnB3eFBWUxF6fQN8zVBxn3UV3tYfUxXzYGLW4u9"
+  "Din Key"
 );
 
 async function getLabsFromCourses() {
