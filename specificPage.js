@@ -11,18 +11,18 @@ const canvas = new CanvasApi(
 
 const courses = canvas.listItems("courses");
 
-const coursePageExternalProject = "..."; // Replace with page...
+const courseSpecificPage = ...; // Replace with page...
 
 for await (const course of courses) {
-    if (course.name == "...") { //replace with course name, exact.
+    if (course.id == ...) { //Replace with course id...
       console.log("Course found: " + course.name);
       const courseId = course.id;
   
       // Fetch a single page using `get()`
-      const coursePage = await canvas.get("courses/" + courseId + "/pages/" + coursePageExternalProject);
+      const coursePage = await canvas.get("courses/" + courseId + "/pages/" + courseSpecificPage);
   
       // Display the contents of the page
       console.log("Page Title:", coursePage.body.title);
-      console.log("Page Body:", convert(coursePage.body.body)); //Convert needs "html-to-text".
+      console.log("Page Body:", convert(coursePage.body.body));
     }
   }
