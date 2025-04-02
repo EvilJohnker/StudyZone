@@ -2,3 +2,4 @@
 ./node_modules/
 ./OpenAI/.env
 ./OpenAI/node_modules/
+./extension-web/node_modules/
