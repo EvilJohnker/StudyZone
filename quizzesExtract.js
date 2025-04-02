@@ -12,7 +12,7 @@ const canvas = new CanvasApi(canvasApiUrl, canvasApiToken);
 const courseId = ...;
 
 // Define the directory where files will be saved
-const directoryPath = "C:\\Users\\Darka\\OneDrive\\Skrivbord\\githubStudyzone\\StudyZone";
+const directoryPath = "C:\\Users\\...\\";
 
 // Ensure directory exists
 if (!fs.existsSync(directoryPath)) {
