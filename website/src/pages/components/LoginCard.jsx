@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginCard = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
-        // Add your login logic here
+        console.log(formData);
+        try {
+            const response = await axios.post('http://localhost:5000/login', formData);
+            console.log('Login was successful:', response.data);
+        } catch (error) {
+            console.error('Error during login:', error);
+            // Handle error (e.g., show error message)
+        }
     };
 
     return (
@@ -21,8 +39,9 @@ const LoginCard = () => {
                     <input
                         type="email"
                         id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         style={styles.input}
                         required
                     />
@@ -32,8 +51,9 @@ const LoginCard = () => {
                     <input
                         type="password"
                         id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
                         style={styles.input}
                         required
                     />
