@@ -17,9 +17,11 @@ const Signup = () => {
     };
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
         console.log('Form submitted:', formData);
         handleSignup();
+        // You can also reset the form after submission if needed
     };
 
     const handleSignup = async () => {
