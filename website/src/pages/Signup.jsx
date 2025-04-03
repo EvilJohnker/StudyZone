@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import sha256 from 'crypto-js/sha256';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -17,16 +18,19 @@ const Signup = () => {
     };
 
     const handleSubmit = (e) => {
-
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        handleSignup();
+        const hashedFormData = {
+            ...formData,
+            password: sha256(formData.password).toString(), // Hash the password
+        };
+        console.log('Form submitted:', hashedFormData);
+        handleSignup(hashedFormData);
         // You can also reset the form after submission if needed
     };
 
-    const handleSignup = async () => {
+    const handleSignup = async (hashedFormData) => {
         try {
-            const response = await axios.post('http://localhost:5000/signup', formData);
+            const response = await axios.post('http://localhost:5000/signup', hashedFormData);
             console.log('Signup successful:', response.data);
             // Handle successful signup (e.g., redirect to login page)
         } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import sha256 from 'crypto-js/sha256';
 
 const LoginCard = () => {
 
@@ -20,10 +21,14 @@ const LoginCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        const hashedFormData = {
+            ...formData,
+            password: sha256(formData.password).toString(), // Hash the password
+        };
+        console.log(hashedFormData);
         try {
-            const response = await axios.post('http://localhost:5000/login', formData);
-            console.log('Login was successful:', response.data);
+            const response = await axios.post('http://localhost:5000/login', hashedFormData);
+            console.log('Login request was successful:', response.data);
         } catch (error) {
             console.error('Error during login:', error);
             // Handle error (e.g., show error message)
