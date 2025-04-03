@@ -6,6 +6,7 @@ import About from './pages/About.jsx';
 import Signup from './pages/Signup.jsx';
 import Navbar from './pages/components/Navbar.jsx';
 import Footer from './pages/components/Footer.jsx';
+import Overview from './pages/Overview.jsx';
 import { createBrowserRouter, RouterProvider, Outlet, Link } from 'react-router-dom';
 
 // Layout component to include Navbar
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />,
       },
+      {
+        path: '/overview',
+        element: <Overview />,
+      }
     ],
   },
 ]);

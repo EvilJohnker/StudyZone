@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar.jsx';
+import axios from 'axios';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -19,12 +19,22 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        // Add signup logic here
+        handleSignup();
     };
+
+    const handleSignup = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/signup', formData);
+            console.log('Signup successful:', response.data);
+            // Handle successful signup (e.g., redirect to login page)
+        } catch (error) {
+            console.error('Error during signup:', error);
+            // Handle error (e.g., show error message)
+        }
+    }
 
     return (
         <>
-            <Navbar />
             <div className="flex items-center justify-center h-[calc(100vh-80px)] bg-gray-100">
                 <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
